@@ -15,12 +15,12 @@ import requests
 
 NVIDIA_ENDPOINT = "https://integrate.api.nvidia.com/v1/chat/completions"
 DEFAULT_MODELS = [
-    "qwen/qwen3-next-80b-a3b-instruct",
-    "qwen/qwen2.5-coder-32b-instruct",
-    "qwen/qwq-32b",
+    "nvidia/nvidia-nemotron-nano-9b-v2",
+    "meta/llama-3.1-8b-instruct",
     "nvidia/llama-3.1-nemotron-nano-8b-v1",
+    "qwen/qwen3-next-80b-a3b-instruct",
 ]
-DEFAULT_TIMEOUT = 45
+DEFAULT_TIMEOUT = 90
 DEFAULT_MAX_PROMPT_CHARS = 12000
 APP_NAME = "Prompt Studio"
 REQUIRED_PROMPT_SECTIONS = [

@@ -157,7 +157,7 @@ NVIDIA_API_KEY=your-nvidia-api-key
 Optional settings:
 
 ```text
-NVIDIA_MODELS=qwen/qwen3-next-80b-a3b-instruct,qwen/qwen2.5-coder-32b-instruct
+NVIDIA_MODELS=nvidia/nvidia-nemotron-nano-9b-v2,meta/llama-3.1-8b-instruct,nvidia/llama-3.1-nemotron-nano-8b-v1
 PROMPT_MAX_CHARS=12000
 ```
 
