@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prompt Studio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="ambient-grid" aria-hidden="true"></div>
+    <main class="app-shell">
+        <section class="input-panel" aria-labelledby="appTitle">
+            <div class="brand-row">
+                <div>
+                    <p class="eyebrow">Prompt Studio</p>
+                    <h1 id="appTitle">Prompt Studio</h1>
+                </div>
+                <span class="status-pill">NVIDIA NIM</span>
+            </div>
+
+            <div class="control-block">
+                <div class="field-head">
+                    <label>Optimization profile</label>
+                    <span id="profileHint">Balanced project brief</span>
+                </div>
+                <div class="profile-grid" id="profileGrid" role="radiogroup" aria-label="Optimization profile">
+                    <label class="profile-option">
+                        <input type="radio" name="profile" value="project_brief" checked>
+                        <span>
+                            <strong>Project Brief</strong>
+                            <small>Balanced product and engineering scope</small>
+                        </span>
+                    </label>
+                    <label class="profile-option">
+                        <input type="radio" name="profile" value="coding_agent">
+                        <span>
+                            <strong>Coding Agent</strong>
+                            <small>Direct execution prompt for builders</small>
+                        </span>
+                    </label>
+                    <label class="profile-option">
+                        <input type="radio" name="profile" value="product_spec">
+                        <span>
+                            <strong>Product Spec</strong>
+                            <small>Users, flows, risks, and success criteria</small>
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="prompt-card">
+                <div class="field-head">
+                    <label for="promptInput">Project idea</label>
+                    <span id="charCount">0 characters</span>
+                </div>
+                <textarea id="promptInput" placeholder="Describe the project you want to build, including the problem, audience, constraints, and known requirements."></textarea>
+                <div class="sample-row" aria-label="Example prompts">
+                    <button class="sample-chip" type="button" data-prompt="Build a study tracking app that records sessions, organizes subjects, and summarizes weekly progress for students.">Study planning app</button>
+                    <button class="sample-chip" type="button" data-prompt="Build a restaurant website that presents the menu, manages table reservations, and supports mobile-first customer booking.">Restaurant reservations</button>
+                    <button class="sample-chip" type="button" data-prompt="Build a location-aware donor matching app that helps patients or coordinators find eligible nearby blood donors quickly.">Donor matching app</button>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button id="optimizeBtn" type="button" class="primary">Generate Brief</button>
+                <button id="clearBtn" type="button" class="secondary">Clear</button>
+            </div>
+            <p id="status" class="status">Ready.</p>
+        </section>
+
+        <section class="output-panel" aria-labelledby="outputTitle">
+            <div class="output-header">
+                <div>
+                    <p class="eyebrow">Generated Brief</p>
+                    <h2 id="outputTitle">Implementation prompt</h2>
+                </div>
+                <div class="output-actions">
+                    <div class="view-toggle" role="radiogroup" aria-label="Prompt output version">
+                        <label>
+                            <input type="radio" name="outputMode" value="full" checked>
+                            <span>Full</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="outputMode" value="compact">
+                            <span>Compact</span>
+                        </label>
+                    </div>
+                    <button id="copyBtn" type="button" class="secondary">Copy</button>
+                    <button id="downloadBtn" type="button" class="secondary">Export .md</button>
+                </div>
+            </div>
+
+            <div class="score-strip" aria-label="Prompt quality summary">
+                <article>
+                    <span>Quality</span>
+                    <strong id="qualityScore">--</strong>
+                </article>
+                <article>
+                    <span>Sections</span>
+                    <strong id="sectionScore">0/23</strong>
+                </article>
+                <article>
+                    <span>Tokens Saved</span>
+                    <strong id="tokenSaved">0%</strong>
+                </article>
+                <article>
+                    <span>Tokens</span>
+                    <strong id="tokenCount">0</strong>
+                </article>
+                <article>
+                    <span>Source</span>
+                    <strong id="sourceMeta">--</strong>
+                </article>
+            </div>
+
+            <div class="output-frame">
+                <div class="window-bar" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <pre id="optimizedOutput">The implementation prompt will appear here after generation.</pre>
+            </div>
+
+            <div class="details-grid">
+                <article>
+                    <h3>Rationale</h3>
+                    <p id="whyText">No brief generated yet.</p>
+                </article>
+                <article>
+                    <h3>Improvements</h3>
+                    <ul id="checklist"></ul>
+                </article>
+                <article>
+                    <h3>Quality Checks</h3>
+                    <ul id="qualityList"></ul>
+                </article>
+                <article>
+                    <h3>Result Actions</h3>
+                    <p id="tokenText">Generate a brief to see compact prompt savings.</p>
+                    <div class="result-actions">
+                        <button id="useAsInputBtn" type="button" class="secondary">Use as Input</button>
+                        <button id="clearHistoryBtn" type="button" class="secondary">Clear History</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <aside class="history-panel" aria-labelledby="historyTitle">
+            <div class="history-head">
+                <div>
+                    <p class="eyebrow">Workspace</p>
+                    <h2 id="historyTitle">History</h2>
+                </div>
+                <span id="historyCount">0</span>
+            </div>
+            <div id="historyList" class="history-list">
+                <p class="empty-history">No saved briefs yet.</p>
+            </div>
+        </aside>
+    </main>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+Project Milestone 2 Presentation
+Project Name: Prompt Studio
+Student ID: 22012874
+Student Name: MORSHED MD MONOARUL
+
+============================================================
+1. Demo Video Script
+============================================================
+
+Hello everyone, my project name is Prompt Studio.
+
+Prompt Studio is a lightweight local web application that helps users convert a rough project idea into a professional, implementation-ready prompt for AI coding assistants.
+
+The main purpose of this project is to solve a real problem that many students, developers, and project builders face. When someone has an idea, they often do not know how to explain it properly to an AI tool. A weak prompt can produce incomplete code, missing requirements, unclear user flow, and poor project structure. Prompt Studio improves this process by generating a stronger and more organized project prompt.
+
+In this demo, I will show how Prompt Studio works.
+
+First, the user enters a rough project idea in the input box. Then the user selects an optimization profile. The available profiles are Project Brief, Coding Agent, and Product Spec.
+
+After clicking Generate Brief, the system sends the request to the Python backend. The backend prepares profile-specific optimization instructions and uses the NVIDIA NIM API to generate a structured prompt. If the API is not available, the system also has a local fallback optimizer.
+
+The generated result includes important sections such as:
+- Pre-build instructions
+- Project identity
+- Objective
+- Target users
+- Core features
+- Runtime and configuration
+- Implementation phases
+- Startup and run sequence
+- Testing and validation
+- Acceptance criteria
+- Done-when criteria
+
+Prompt Studio also includes a compact prompt mode. This mode reduces token usage while preserving important headings, code, file paths, URLs, and technical terms. The GUI shows the percentage of tokens saved, so users can understand how much cost or context space they are saving.
+
+The project also saves recent prompt generations in browser localStorage. Users can restore previous prompts from history and export the generated prompt as a Markdown file.
+
+This project is built with a lightweight architecture:
+- Static HTML, CSS, and JavaScript frontend
+- Python HTTP server backend
+- NVIDIA NIM API integration
+- Local fallback optimizer
+- Browser localStorage history
+
+The project does not use a database or heavy build system, so it is simple to run locally.
+
+To run the project, the command is:
+python prompt_optimizer.py --port 8765
+
+Then the user can open:
+http://127.0.0.1:8765/
+
+This completes the demo of Prompt Studio.
+
+============================================================
+2. Real-World Problem It Solves
+============================================================
+
+Prompt Studio solves the problem of weak and unclear AI project prompts.
+
+Many users have good project ideas, but they cannot describe the project clearly enough for AI coding assistants. As a result, AI tools may generate incomplete, unstructured, or low-quality outputs.
+
+Prompt Studio solves this by transforming a rough idea into a professional build-ready prompt. It adds structure, implementation phases, technical requirements, runtime expectations, testing instructions, acceptance criteria, and done-when conditions.
+
+This helps:
+- Students create better project instructions
+- Developers save time when starting new projects
+- AI coding assistants produce more accurate results
+- Users reduce token usage with compact prompt mode
+- Project builders keep requirements organized and professional
+
+============================================================
+3. Project Features
+============================================================
+
+Main features of Prompt Studio:
+
+1. Rough idea input
+2. Three optimization profiles:
+   - Project Brief
+   - Coding Agent
+   - Product Spec
+3. NVIDIA NIM backend integration
+4. Local fallback optimizer
+5. Structured implementation-ready prompt generation
+6. Compact prompt mode
+7. Estimated token savings percentage
+8. Prompt quality score
+9. Required section coverage
+10. Browser history using localStorage
+11. Markdown export
+12. Lightweight local architecture with no database
+
+============================================================
+4. System Diagram
+============================================================
+
+Mermaid System Diagram:
+
+flowchart LR
+    user["User"] --> ui["Prompt Studio GUI<br/>Static HTML/CSS/JavaScript"]
+    ui --> input["Project Idea + Profile<br/>project_brief | coding_agent | product_spec"]
+    input --> api["POST /api/optimize<br/>Python HTTP Backend"]
+
+    api --> validate["Validate Input<br/>Prompt length + profile"]
+    validate --> build["Build Optimization Instructions<br/>Profile-specific strategy"]
+    build --> nim{"NVIDIA API Key<br/>available?"}
+
+    nim -- Yes --> nvidia["NVIDIA NIM API<br/>Chat Completions"]
+    nvidia --> model["Model Response<br/>Optimized prompt JSON"]
+
+    nim -- No or failed --> fallback["Local Fallback Optimizer<br/>Structured prompt template"]
+
+    model --> normalize["Normalize Required Sections"]
+    fallback --> normalize
+
+    normalize --> compact["Compact Prompt Generator<br/>Preserve headings + technical tokens"]
+    compact --> savings["Token Savings Estimator<br/>saved_tokens + saved_percent"]
+    savings --> quality["Prompt Quality Analyzer<br/>sections, checks, score, grade"]
+
+    quality --> response["JSON Response<br/>optimized_prompt, compact_prompt,<br/>token_savings, quality, stats"]
+    response --> ui
+
+    ui --> toggle["Full / Compact Toggle"]
+    ui --> history["Browser localStorage<br/>promptStudio.history"]
+    ui --> export["Markdown Export<br/>Prompt Studio Brief"]
+
+    legacy["Legacy History Key<br/>projectPromptStudio.history"] --> history
+
+============================================================
+5. GitHub Upload Checklist
+============================================================
+
+Before uploading to GitHub:
+
+1. Make sure the project folder contains:
+   - prompt_optimizer.py
+   - requirements.txt
+   - README.md
+   - prompt_app/index.html
+   - prompt_app/style.css
+   - prompt_app/app.js
+
+2. Do not upload secret API keys.
+
+3. Make sure .env is not uploaded if it contains:
+   - NVIDIA_API_KEY
+   - NGC_API_KEY
+
+4. Add setup instructions in README.md.
+
+5. Make the GitHub repository public.
+
+6. Copy the GitHub repository link for ECampus and LinkedIn.
+
+============================================================
+6. LinkedIn Post Draft
+============================================================
+
+I am happy to share my project for Project Milestone 2.
+
+Project Name: Prompt Studio
+
+Prompt Studio is a lightweight local web application that converts rough project ideas into professional, implementation-ready prompts for AI coding assistants.
+
+The project solves a real-world problem: many students and developers have good ideas, but they struggle to write clear and structured prompts for AI tools. Prompt Studio improves this by generating prompts with project objectives, implementation phases, runtime expectations, constraints, testing checklist, acceptance criteria, and done-when conditions.
+
+Key Features:
+- Static HTML/CSS/JavaScript frontend
+- Python backend
+- NVIDIA NIM API integration
+- Local fallback optimizer
+- Full and compact prompt modes
+- Estimated token savings percentage
+- Prompt quality score
+- Browser history with localStorage
+- Markdown export
+
+GitHub Link:
+[PASTE YOUR PUBLIC GITHUB REPOSITORY LINK HERE]
+
+System Diagram:
+[PASTE SYSTEM DIAGRAM IMAGE OR MERMAID DIAGRAM HERE]
+
+This project helped me understand practical AI application development, prompt optimization, API integration, and lightweight full-stack architecture.
+
+============================================================
+7. ECampus Submission Checklist
+============================================================
+
+For ECampus submission:
+
+1. Upload the project demo video.
+2. In the video, explain:
+   - Project name
+   - Real-world problem
+   - Main features
+   - System architecture
+   - Demo of generating a prompt
+   - Token-saving compact mode
+   - GitHub repository
+3. Upload or provide the public GitHub repository link.
+4. Post on LinkedIn with:
+   - GitHub link
+   - System diagram
+   - Short project details
+   - Professor mention, if required
+
+============================================================
+8. Short Project Summary
+============================================================
+
+Prompt Studio is a local AI-powered prompt optimization tool. It helps users convert rough software project ideas into structured prompts that are ready for AI coding assistants. It uses a Python backend, static frontend, NVIDIA NIM API, local fallback optimizer, compact prompt generation, token savings estimation, quality scoring, localStorage history, and Markdown export.
+
+============================================================
+End of Presentation Notes
+============================================================
