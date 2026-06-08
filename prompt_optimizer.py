@@ -159,7 +159,8 @@ class OptimizationError(RuntimeError):
     pass
 
 
-def load_dotenv(path: Path = Path(".env")) -> None:
+def load_dotenv(path: Path | None = None) -> None:
+    path = path or Path(__file__).with_name(".env")
     if not path.exists():
         return
 
