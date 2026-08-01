@@ -305,3 +305,17 @@ curl -X POST http://127.0.0.1:8765/api/optimize \
 ## License
 
 This project is prepared for academic and portfolio use. Add a license file before using it in production or distributing it broadly.
+
+---
+
+## Author
+
+**MD Monoarul Morshed** — AI & Edge Computing Engineer based in Seoul, South Korea.
+Computer Science graduate (Sejong University, 2026) and Teaching Assistant, working on
+trustworthy computer vision, edge AI, post-quantum cryptography, and security-first
+agentic systems.
+
+- Portfolio — [mdmonoarulmorshed.com](https://mdmonoarulmorshed.com)
+- Notes — [mdmonoarulmorshed.com/blog](https://mdmonoarulmorshed.com/blog)
+- GitHub — [@MORSHEDMDMONOARUL](https://github.com/MORSHEDMDMONOARUL)
+- LinkedIn — [md-monoarul-morshed](https://www.linkedin.com/in/md-monoarul-morshed-6a07a6263)
