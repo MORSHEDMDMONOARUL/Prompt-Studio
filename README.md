@@ -4,6 +4,19 @@ Prompt Studio is a lightweight local web application that transforms rough softw
 
 It helps users move from a vague idea to a professional build specification with clear objectives, implementation phases, runtime expectations, testing requirements, acceptance criteria, and done-when conditions. The app also generates a compact prompt version and shows the estimated percentage of tokens saved.
 
+## Architecture
+
+![Prompt-Studio architecture](docs/architecture.png)
+
+A rough idea enters, one of three profiles shapes it, and a structured specification
+comes out. The important decision is the lower path: the local optimiser was built before
+the remote one, so when the NVIDIA NIM call fails, times out, or is rate limited, the tool
+degrades instead of erroring. The remote model is an enhancement to a pipeline that
+already works, not the pipeline itself.
+
+Token savings are reported as a conservative character-based estimate and labelled as an
+estimate, because a number the user cannot verify is worse than no number.
+
 ## Overview
 
 Writing a good prompt for an AI coding assistant is often harder than it looks. A weak prompt can lead to incomplete code, missing edge cases, unclear workflows, and wasted tokens.
